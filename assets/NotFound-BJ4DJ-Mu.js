@@ -1,1 +1,0 @@
-import{_ as o,c as s,t as a,o as e}from"./index-BOXX0mmQ.js";const n={class:"not-found"},c={__name:"NotFound",setup(_){return(t,r)=>(e(),s("div",n,a(t.t("notFound.title")),1))}},p=o(c,[["__scopeId","data-v-c4a3a5dc"]]);export{p as default};
