@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     {{ 
-      t('about.title')
+      t('about.title')111111
     }}
   </div>
 </template>

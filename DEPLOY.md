@@ -2,7 +2,7 @@
 
 ## 问题解决
 
-已修复 GitHub Pages 部署时 CSS 文件 404 的问题，并改用 hash 路由模式。
+已修复 GitHub Pages 部署时 CSS 文件 404 的问题。
 
 ## 修复内容
 
@@ -10,11 +10,6 @@
 - 添加了 `base` 路径配置，生产环境使用 `/website/`
 - 配置了正确的资源文件输出路径
 - 优化了构建配置
-
-### 2. 路由模式优化
-- 改用 hash 路由模式 (`createWebHashHistory`)
-- 避免 GitHub Pages 的路径问题
-- 支持直接访问子路由页面
 
 ### 2. 构建脚本
 - 添加了 `build:github` 脚本用于 GitHub Pages 部署
@@ -51,12 +46,4 @@
 
 - 适用于 GitHub Pages 子目录部署（仓库名为 website）
 - CSS 和 JS 文件现在会正确加载，路径为 `/website/assets/...`
-- 使用 hash 路由模式，避免 GitHub Pages 的路径问题
 - 确保仓库名称为 `website`，否则需要修改 `vite.config.js` 中的 `base` 路径
-
-## Hash 路由优势
-
-- ✅ 无需服务器配置，直接访问子路由
-- ✅ 兼容 GitHub Pages 等静态托管服务
-- ✅ 支持浏览器前进后退功能
-- ✅ 避免 404 错误，所有路由都指向 index.html
