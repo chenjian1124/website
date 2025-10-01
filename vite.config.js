@@ -13,6 +13,10 @@ export default defineConfig({
       '@': resolve(__dirname, 'src')
     }
   },
+  // 确保正确处理中文编码
+  esbuild: {
+    charset: 'utf8'
+  },
   css: {
     preprocessorOptions: {
       less: {
