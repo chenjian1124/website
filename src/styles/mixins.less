@@ -1,0 +1,52 @@
+// 常用混入函数
+
+// 清除浮动
+.clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// 文本省略号
+.text-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行文本省略号
+.text-ellipsis-multiline(@lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: @lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 居中布局
+.flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 响应式断点
+.respond-to(@breakpoint) when (@breakpoint = mobile) {
+  @media (max-width: 768px) {
+    @content();
+  }
+}
+
+.respond-to(@breakpoint) when (@breakpoint = tablet) {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content();
+  }
+}
+
+.respond-to(@breakpoint) when (@breakpoint = desktop) {
+  @media (min-width: 1025px) {
+    @content();
+  }
+}
