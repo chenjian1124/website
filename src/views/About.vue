@@ -21,14 +21,29 @@
         <li>✅ 组件化开发模式</li>
         <li>✅ 优雅的样式解决方案</li>
       </ul>
+      
+      <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #1890ff;">
+        <h4>🚀 部署测试</h4>
+        <p><strong>当前时间：</strong> {{ currentTime }}</p>
+        <p><strong>部署版本：</strong> v1.0.1</p>
+        <p><strong>状态：</strong> <span style="color: #52c41a;">✅ 部署成功</span></p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { ref, onMounted } from 'vue'
 
 const { t } = useI18n()
+
+// 添加当前时间显示
+const currentTime = ref('')
+
+onMounted(() => {
+  currentTime.value = new Date().toLocaleString('zh-CN')
+})
 </script>
 
 <style lang="less" scoped>
