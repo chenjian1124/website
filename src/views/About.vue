@@ -1,8 +1,9 @@
 <template>
   <div class="about">
     {{ 
-      t('about.title')111111
+      t('about.title')
     }}
+    123456
   </div>
 </template>
 
