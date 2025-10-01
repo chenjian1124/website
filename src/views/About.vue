@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>{{ t('about.title') }}</h1>
+    <h1>{{ t('about.title') }}666666</h1>
     <div class="about-content">
       <p>{{ t('about.content') }}</p>
       <p>{{ t('about.description') }}</p>
