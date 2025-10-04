@@ -39,7 +39,7 @@ import Touch from "@/assets/images/header/touch.svg";
 <style scoped lang="less">
 .header {
   display: flex;
-  margin: 48px auto;
+  padding: 48px 0;
   .header-left {
     width: 192px;
     height: 112px;

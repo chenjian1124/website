@@ -95,6 +95,25 @@
         </div>
       </div>
     </div>
+    <!-- Idea -->
+    <div class="idea common_padding">
+      <div class="idea_bgidea_bg">
+        <div class="idea_bg_content">
+          <div class="idea_title">Have an idea? Let’s talk.</div>
+          <div class="idea_content">
+            Visually attractive design from concept to final result. We create
+            solutions that are bold and forward-looking.
+          </div>
+          <div class="idea_button">
+            <img
+              :src="getStaticResource('home/calendar.png')"
+              alt="arrow-up-right"
+            />
+            Free Consultation
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -169,14 +188,12 @@ const pentagonList = [
 
 <style lang="less" scoped>
 .home-title {
-  padding: 0 128px;
+  padding: 16px 128px 72px;
   font-size: 80px;
   font-weight: 600;
   color: #fff;
   text-align: center;
   line-height: 1.1;
-  margin-bottom: 72px;
-  margin-top: 16px;
 }
 .banner {
   width: 100%;
@@ -209,7 +226,7 @@ const pentagonList = [
 }
 .partner {
   width: 100%;
-  margin: 120px 0;
+  padding: 120px 0;
   display: flex;
   justify-content: space-between;
   .partner-left {
@@ -321,6 +338,9 @@ const pentagonList = [
     margin-left: 12px;
   }
 }
+.our-service {
+  padding-bottom: 175px;
+}
 .our-service-content {
   padding-top: 46px;
   width: 410px;
@@ -350,6 +370,88 @@ const pentagonList = [
     color: #fff;
     cursor: pointer;
     display: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+
+    // 添加渐变背景效果
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(141, 76, 254, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+      );
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    // 添加发光边框效果
+    &::after {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      background: linear-gradient(
+        45deg,
+        #8d4cfe,
+        #ff6b6b,
+        #4ecdc4,
+        #45b7d1,
+        #8d4cfe
+      );
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+      z-index: 9;
+      transform: scale(1.08) translateY(-8px);
+      box-shadow: 0 20px 40px rgba(141, 76, 254, 0.3),
+        0 0 60px rgba(141, 76, 254, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+      border-color: #8d4cfe;
+
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        opacity: 1;
+        animation: rotate 2s linear infinite;
+      }
+
+      span {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    span {
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+  }
+
+  // 旋转动画
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   .pentagon-item-1 {
     top: 0;
@@ -375,6 +477,58 @@ const pentagonList = [
     top: 167px;
     left: 0px;
     display: block;
+  }
+}
+
+.idea {
+  padding: 80px 0;
+}
+
+.idea_bgidea_bg {
+  width: 100%;
+  height: 544px;
+  background: url("@/assets/images/home/idea.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.idea_bg_content {
+  width: 688px;
+  .idea_title {
+    font-size: 96px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 1.1;
+    margin-top: -26px;
+  }
+  .idea_content {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    margin: 16px 0 32px;
+  }
+  .idea_button {
+    width: 220px;
+    height: 52px;
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    border-radius: 32px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .idea_button_img {
+    width: 24px;
+    height: 24px;
   }
 }
 </style>
