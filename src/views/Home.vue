@@ -1,157 +1,286 @@
 <template>
-  <div class="home">
-    <div class="hero-section">
-      <h1 class="hero-title">{{ t('home.title') }}</h1>
-      <p class="hero-description">欢迎使用 Less 预处理器！</p>
-      <div class="button-group">
-        <button class="btn btn-primary">主要按钮</button>
-        <button class="btn btn-success">成功按钮</button>
+  <div class="common_width home">
+    <div class="home-title">XPlore Your Imagination with X Design Studio</div>
+    <div class="banner">
+      <div class="mask">
+        <div class="mask-item" v-for="item in 10" :key="item"></div>
       </div>
     </div>
-    
-    <div class="demo-section">
-      <h3>Less 特性演示</h3>
-      <div class="card-grid">
-        <div class="card">
-          <h4>变量使用</h4>
-          <p>使用 @primary-color 变量</p>
+    <div class="partner">
+      <div class="partner-left">
+        Our passion for creativity knows no bounds, and we're dedicated to
+        bringing fresh, innovative ideas to life. <br />
+        <br />
+        At X Design, we believe in the power of transformative design to elevate
+        brands and shape unforgettable experiences.
+      </div>
+      <div class="partner-right">
+        <div class="partner-right-item" v-for="item in partnerList" :key="item">
+          <img :src="getStaticResource(item)" alt="partner" />
         </div>
-        <div class="card">
-          <h4>嵌套选择器</h4>
-          <p>Less 支持嵌套语法</p>
+      </div>
+    </div>
+    <!-- Our Services -->
+    <div class="our-services common_padding">
+      <div class="module_title">
+        <img :src="getStaticResource('home/Vector.svg')" alt="module_title" />
+        Our Services
+      </div>
+      <div class="our-services-content">
+        <div
+          class="our-services-content-item"
+          v-for="item in ourServicesList"
+          :key="item"
+        >
+          <img
+            :src="getStaticResource(item.image)"
+            alt="our-services"
+            class="our-services-content-item-image"
+          />
+          <div class="our-services-content-item-title">{{ item.title }}</div>
+          <img
+            :src="getStaticResource('home/add.png')"
+            alt="add"
+            class="our-services-content-item-add"
+          />
         </div>
-        <div class="card">
-          <h4>混入函数</h4>
-          <p>使用 .flex-center() 混入</p>
+      </div>
+    </div>
+    <!--Recent Work -->
+    <div class="recent-work common_padding">
+      <div class="module_title">
+        <img :src="getStaticResource('home/Vector.svg')" alt="module_title" />
+        Recent Work
+      </div>
+      <div class="recent-work-content">
+        <div
+          class="recent-work-content-item"
+          v-for="item in recentWorkList"
+          :key="item"
+        >
+          <img
+            :src="getStaticResource(item.image)"
+            alt="recent-work"
+            class="recent-work-content-item-image"
+          />
+          <div class="recent-work-content-item-title">{{ item.title }}</div>
         </div>
+      </div>
+      <div class="recent-work-content-item-more">
+        View all Work
+        <img
+          :src="getStaticResource('home/arrow-up-right.png')"
+          alt="arrow-up-right"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+import { getStaticResource } from "@/unit";
 
+const partnerList = [
+  "home/bosch.png",
+  "home/abbott.png",
+  "home/loreal.png",
+  "home/drager.png",
+  "home/m&g.png",
+  "home/hitachi.png",
+];
+const ourServicesList = [
+  {
+    title: "Branding Design",
+    image: "home/Branding Design.png",
+  },
+  {
+    title: "Visual Design",
+    image: "home/Visual Design.png",
+  },
+  {
+    title: "Video Design",
+    image: "home/Video Design.png",
+  },
+  {
+    title: "Space Design",
+    image: "home/Space Design.png",
+  },
+  {
+    title: "Social Media Development",
+    image: "home/Social Media Development.png",
+  },
+];
+const recentWorkList = [
+  {
+    title: "Branding Design",
+    image: "home/randing Design.png",
+  },
+  {
+    title: "Bosch Office Renovation",
+    image: "home/Bosch Office Renovation.png",
+  },
+  {
+    title: "Drager Product Video",
+    image: "home/Drager Product Video.png",
+  },
+  {
+    title: "IP Design for INNOVATION",
+    image: "home/IP Design for INNOVATION.png",
+  },
+];
 </script>
 
 <style lang="less" scoped>
-@import '../styles/variables.less';
-@import '../styles/mixins.less';
-
-.home {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: @spacing-lg;
-}
-
-.hero-section {
+.home-title {
+  padding: 0 128px;
+  font-size: 80px;
+  font-weight: 600;
+  color: #fff;
   text-align: center;
-  padding: @spacing-xl 0;
-  background: linear-gradient(135deg, @primary-color, lighten(@primary-color, 20%));
-  color: white;
-  border-radius: @border-radius-lg;
-  margin-bottom: @spacing-xl;
-  
-  .hero-title {
-    font-size: 2.5rem;
-    margin-bottom: @spacing-md;
-    font-weight: bold;
-  }
-  
-  .hero-description {
-    font-size: @font-size-lg;
-    margin-bottom: @spacing-lg;
-    opacity: 0.9;
-  }
-  
-  .button-group {
-    .flex-center();
-    gap: @spacing-md;
-    
-    .btn {
-      padding: @spacing-sm @spacing-lg;
-      font-size: @font-size-base;
-      
-      &.btn-primary {
-        background-color: rgba(255, 255, 255, 0.2);
-        border: 2px solid white;
-        color: white;
-        
-        &:hover {
-          background-color: white;
-          color: @primary-color;
-        }
-      }
-      
-      &.btn-success {
-        background-color: @success-color;
-        border: 2px solid @success-color;
-        color: white;
-        
-        &:hover {
-          background-color: lighten(@success-color, 10%);
-          border-color: lighten(@success-color, 10%);
-        }
-      }
+  line-height: 1.1;
+  margin-bottom: 72px;
+  margin-top: 16px;
+}
+.banner {
+  width: 100%;
+  height: 610px;
+  background: url("@/assets/images/home/banner.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 40px;
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .mask-item {
+      width: 110px;
+      height: 100%;
+      border-radius: 55px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #8d4cfe;
     }
   }
 }
+.partner {
+  width: 100%;
+  margin: 120px 0;
+  display: flex;
+  justify-content: space-between;
+  .partner-left {
+    width: 783px;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .partner-right {
+    width: 432px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 
-.demo-section {
-  margin-top: @spacing-xl;
-  
-  h3 {
-    margin-bottom: @spacing-lg;
-    color: @primary-color;
-    font-size: 1.5rem;
-  }
-  
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: @spacing-lg;
-    
-    .card {
-      background: white;
-      padding: @spacing-lg;
-      border-radius: @border-radius-base;
-      box-shadow: @box-shadow-card;
-      transition: transform 0.3s, box-shadow 0.3s;
-      
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: @box-shadow-base;
-      }
-      
-      h4 {
-        color: @primary-color;
-        margin-bottom: @spacing-sm;
-        font-size: @font-size-lg;
-      }
-      
-      p {
-        color: #666;
-        line-height: 1.6;
-        margin: 0;
-      }
+    .partner-right-item {
+      width: 216px;
+      height: 40px;
+      margin: 8px 0;
+      text-align: right;
     }
   }
-  
-  // 响应式设计
-  .respond-to(mobile) {
-    .card-grid {
-      grid-template-columns: 1fr;
+}
+.module_title {
+  height: 86px;
+  padding: 24px 0;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  img {
+    height: 22px;
+  }
+}
+.common_padding {
+  padding-bottom: 80px;
+}
+.our-services-content-item {
+  display: flex;
+  align-items: center;
+  height: 104px;
+  border-bottom: 1px solid #282828;
+  cursor: pointer;
+
+  .our-services-content-item-image {
+    width: 150px;
+    margin-right: 32px;
+  }
+  .our-services-content-item-add {
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+  }
+  .our-services-content-item-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+  }
+}
+.recent-work-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  .recent-work-content-item {
+    width: 626px;
+    height: 627px;
+    border-radius: 24px;
+    border: 2px solid #282828;
+    .recent-work-content-item-image {
+      width: 624px;
+      height: 513px;
+      object-fit: cover;
+      border-radius: 24px 24px 0 0;
+      display: block;
     }
-    
-    .hero-section {
-      padding: @spacing-lg 0;
-      
-      .hero-title {
-        font-size: 2rem;
-      }
+    .recent-work-content-item-title {
+      padding: 40px;
+      height: 114px;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 34px;
+      color: #fff;
     }
+  }
+}
+.recent-work-content-item-more {
+  height: 62px;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #282828;
+  border-radius: 32px;
+  img {
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
   }
 }
 </style>
