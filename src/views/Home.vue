@@ -74,6 +74,27 @@
         />
       </div>
     </div>
+    <!-- Our Service -->
+    <div class="our-service common_padding">
+      <div class="module_title">
+        <img :src="getStaticResource('home/Vector.svg')" alt="module_title" />
+        Our Service
+      </div>
+      <div class="our-service-content">
+        XDesign offers comprehensive creative solutions, specializing in brand
+        identity, visual communication, and strategic design excellence.
+      </div>
+      <div class="pentagon">
+        <div
+          v-for="(item, index) in pentagonList"
+          class="pentagon-item"
+          :class="`pentagon-item-${index + 1}`"
+          :key="item.title"
+        >
+          <span>{{ item }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -110,6 +131,14 @@ const ourServicesList = [
     image: "home/Social Media Development.png",
   },
 ];
+
+const serviceCircles = [
+  { title: "Branding Design" },
+  { title: "Video Design" },
+  { title: "Visual Design" },
+  { title: "Space Design" },
+  { title: "Packaging Design" },
+];
 const recentWorkList = [
   {
     title: "Branding Design",
@@ -127,6 +156,14 @@ const recentWorkList = [
     title: "IP Design for INNOVATION",
     image: "home/IP Design for INNOVATION.png",
   },
+];
+
+const pentagonList = [
+  "Branding Design",
+  "Visual Design",
+  "Packaging Design",
+  "Space Design",
+  "Vidoe Design",
 ];
 </script>
 
@@ -217,6 +254,7 @@ const recentWorkList = [
 .common_padding {
   padding-bottom: 80px;
 }
+
 .our-services-content-item {
   display: flex;
   align-items: center;
@@ -281,6 +319,62 @@ const recentWorkList = [
     width: 24px;
     height: 24px;
     margin-left: 12px;
+  }
+}
+.our-service-content {
+  padding-top: 46px;
+  width: 410px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  color: #fff;
+}
+
+.pentagon {
+  width: 772px;
+  height: 754px;
+  margin: 0 auto;
+  margin-top: 32px;
+  position: relative;
+  .pentagon-item {
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    background: #000;
+    border-radius: 50%;
+    border: 1px solid #282828;
+    text-align: center;
+    line-height: 330px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+  }
+  .pentagon-item-1 {
+    top: 0;
+    left: 220px;
+    display: block;
+  }
+  .pentagon-item-2 {
+    top: 167px;
+    right: 0;
+    display: block;
+  }
+  .pentagon-item-3 {
+    bottom: 0;
+    right: 100px;
+    display: block;
+  }
+  .pentagon-item-4 {
+    bottom: 0;
+    left: 76px;
+    display: block;
+  }
+  .pentagon-item-5 {
+    top: 167px;
+    left: 0px;
+    display: block;
   }
 }
 </style>
